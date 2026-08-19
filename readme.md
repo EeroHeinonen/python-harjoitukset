@@ -24,4 +24,4 @@ Tehtävät 1-4 tehty ja ajettu.
 
 Mod 5
 
-Tehtävät 1,2 ja 4 tehty ja ajettu.
+Tehtävät 1 - 4 tehty ja ajettu.
