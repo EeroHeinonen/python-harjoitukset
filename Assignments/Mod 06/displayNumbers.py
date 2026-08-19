@@ -11,4 +11,4 @@ while userIn != "":
 	elif userIn != "":
 		numList.append(int(userIn))
 numList.sort(reverse = True)
-print(numList)
+print(numList[0:5])
