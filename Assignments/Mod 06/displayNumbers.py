@@ -1,8 +1,14 @@
+from webbrowser import Elinks
+
+
 numList = []
 userIn = 0
 
 while userIn != "":
 	userIn = input("Enter a number: ")
-	numList.append(userIn)
-
-print(numList.sort)
+	if userIn == "":
+		pass
+	elif userIn != "":
+		numList.append(int(userIn))
+numList.sort(reverse = True)
+print(numList)
