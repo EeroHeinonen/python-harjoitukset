@@ -26,6 +26,8 @@ Mod 5
 
 Tehtävät 1 - 4 tehty ja ajettu.
 
+Projekti tehtävä 2 tehty.
+
 Mod 6
 
 Tehtävät 1 - 4 tehty ja ajettu.
