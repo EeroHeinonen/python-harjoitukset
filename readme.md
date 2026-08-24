@@ -25,3 +25,11 @@ Tehtävät 1-4 tehty ja ajettu.
 Mod 5
 
 Tehtävät 1 - 4 tehty ja ajettu.
+
+Mod 6
+
+Tehtävät 1 - 4 tehty ja ajettu.
+
+Mod 7
+
+Tehtävät 1 - 6 tehty ja ajettu.
