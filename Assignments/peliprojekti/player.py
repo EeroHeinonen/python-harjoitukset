@@ -1,5 +1,25 @@
 from os import system
 
+def settings():
+    system("cls")
+    print("Settings available: \nDifficulty")
+    print('"Back" to go back')
+    command = input("Enter a setting to change: ")
+    if command == "Difficulty" or command == "difficulty":
+        system("cls")
+        print("Current difficulty: " + difficulty)
+        print("Difficulty settings: \nEasy \nNormal \nHard")
+        print('"Back" to go back')
+        command = input("Enter a difficulty to change: ")
+        if command == "Easy" or command == "easy":
+            difficulty = "Easy"
+        elif command == "Normal" or command == "normal":
+            difficulty = "Normal"
+        elif command == "Hard" or command == "hard":
+            difficulty = "Hard"
+        elif command != "Back" or command != "back":
+            pass
+
 name = input("Enter your name: ")
 age = int(input("Enter your age: "))
 command = ""
@@ -23,26 +43,9 @@ else:
         if command == "quit":
             break
         elif command == "settings":
-            system("cls")
-            print("Settings available: \nDifficulty")
-            print('"Back" to go back')
-            command = input("Enter a setting to change: ")
-            if command == "Difficulty" or command == "difficulty":
-                system("cls")
-                print("Current difficulty: " + difficulty)
-                print("Difficulty settings: \nEasy \nNormal \nHard")
-                print('"Back" to go back')
-                command = input("Enter a difficulty to change: ")
-                if command == "Easy" or command == "easy":
-                    difficulty = "Easy"
-                elif command == "Normal" or command == "normal":
-                    difficulty = "Normal"
-                elif command == "Hard" or command == "hard":
-                    difficulty = "Hard"
-                elif command != "Back" or command != "back":
-                    pass
+            settings()
 
-        elif command = "Play" or command == "play":
+        elif command == "Play" or command == "play":
             system("cls")
             print("Not yet available!")
             ## Game code tba
