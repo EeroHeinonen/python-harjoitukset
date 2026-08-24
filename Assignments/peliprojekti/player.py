@@ -1,11 +1,19 @@
 from os import system
 
+name = input("Enter your name: ")
+age = int(input("Enter your age: "))
+command = ""
+difficulty = "Normal"
+
 def settings():
+    global difficulty
     system("cls")
     print("Settings available: \nDifficulty")
     print('"Back" to go back')
     command = input("Enter a setting to change: ")
+
     if command == "Difficulty" or command == "difficulty":
+
         system("cls")
         print("Current difficulty: " + difficulty)
         print("Difficulty settings: \nEasy \nNormal \nHard")
@@ -20,10 +28,10 @@ def settings():
         elif command != "Back" or command != "back":
             pass
 
-name = input("Enter your name: ")
-age = int(input("Enter your age: "))
-command = ""
-difficulty = "Normal"
+        
+
+    return difficulty
+
 if age < 12:
     print("The minimum age is 12!")
 else:
@@ -40,7 +48,7 @@ else:
                 """)
         print("Available commands: \nPlay (play) \nSettings (settings) \nQuit (quit, exit, stop)")
         command = input("Enter a command: ")
-        if command == "quit":
+        if command == "quit" or command == "exit" or command == "stop":
             break
         elif command == "settings":
             settings()
