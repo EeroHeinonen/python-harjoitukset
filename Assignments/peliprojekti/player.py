@@ -7,43 +7,64 @@ difficulty = "Normal"
 inventory = []
 item = "0"
 
-def settings():
-    global difficulty
-    system("cls")
-    print("Settings available: \nDifficulty")
-    print('"Back" or nothing to go back')
-    command = input("Enter a setting to change: ")
-    r
-    if command == "Difficulty" or command == "difficulty":
-
+def settingsFunc():
+    global command
+    while command.strip().casefold() != "back":
         system("cls")
-        print("Current difficulty: " + difficulty)
-        print("Difficulty settings: \nEasy \nNormal \nHard")
-        print('"Back" or nothing to go back')
-        command = input("Enter a difficulty to change: ")
-        if command == "Easy" or command == "easy":
-            difficulty = "Easy"
-        elif command == "Normal" or command == "normal":
-            difficulty = "Normal"
-        elif command == "Hard" or command == "hard":
-            difficulty = "Hard"
-        elif command != "Back" or command != "back" or command != "BACK":
-            pass
+        print("Settings available: \n\n- Difficulty\n")
+        print('"Back" or nothing to go back\n')
+        command = input("Enter a setting to change: ")
 
-        
+        if command.strip().casefold() == "difficulty":
+            difficultySetting()
+
+        elif command == "":
+            system("cls")
+            print("Invalid command!")
+            input("Press any key to continue...")      
 
     return difficulty
 
+def difficultySetting():
+    global difficulty
+    global command
+    while command.strip().casefold() != "back":
+        system("cls")
+        print("Current difficulty: " + difficulty)
+        print("Difficulty settings: \n\n- Easy \n- Normal \n- Hard\n")
+        print('"Back" to go back')
+        command = input("Enter a difficulty to change: ")
+        if command.strip().casefold() == "easy":
+            difficulty = "Easy"
+            break
+        elif command.strip().casefold() == "normal":
+            difficulty = "Normal"
+            break
+        elif command.strip().casefold() == "hard":
+            difficulty = "Hard"
+            break
+        elif command.strip().casefold() == "back":
+            break
+        else:
+            system("cls")
+            print("Invalid command!\n")
+            input('Press any key to continue...')
+            system("cls")
+
 def addItem():
-    system("cls")
     global item
-    while item != "":
-        item = input('Input item to be added (Or "back" / nothing to go back): ')
-        if item != "back" and item != "Back" and item != "BACK":
+    while item != "BACK":
+        system("cls")
+        item = input('Input item to be added (Or "back" to go back): ')
+        if item.strip().casefold() == "back":
+            break
+        else:
             if item != "":
                 inventory.append(item)
-        else:
-            pass
+                print("\nItem added to inventory!\n")
+                input('Press any key to continue...')
+            else:
+                print("\nInvalid item!\n")
 
     return item
 
@@ -55,9 +76,10 @@ def showInventory():
     input('Press any key to continue...')
 
 if age < 12:
+    system("cls")
     print("The minimum age is 12!")
 else:
-    while command != "stop" or command != "exit" or command != "quit" or command != "Stop" or command != "Exit" or command != "Quit" or command != "STOP" or command != "EXIT" or command != "QUIT":
+    while command.strip().casefold() != "stop" or command.strip().casefold() != "exit" or command.strip().casefold() != "quit":
         system("cls")
         print(r"""
 
@@ -68,22 +90,26 @@ else:
 
 
                 """)
-        print("Available commands: \nPlay (play) \nInventory (add item, show inventory) \nSettings (settings) \nQuit (quit, exit, stop)")
+        print("Available commands: \n\n- Play (play) \n- Settings (settings) \n- Quit (quit, exit, stop)\n")
         command = input("Enter a command: ")
-        if command == "quit" or command == "exit" or command == "stop":
-            break
-        elif command == "settings" or command == "Settings" or command == "SETTINGS":
-            settings()
-        elif command == "add item" or command == "Add Item" or command == "Add item" or command == "add Item" or command == "ADD ITEM" or command == "additem" or command == "Additem"or command == "addItem" or command == "ADDITEM":
-            addItem()
-        elif command == "inventory" or command == "Inventory" or command == "INVENTORY":
-            showInventory()
-        elif command == "Play" or command == "play":
-            system("cls")
-            print("Not yet available!")
-            input("Press any key to continue...")
-            ## Game code tba
-        else:
+        if command.strip().casefold() == "":
             system("cls")
             print("Invalid command!")
             input("Press any key to continue...")
+        elif command.strip().casefold() == "settings":
+            settingsFunc()
+        elif command.strip().casefold() == "play":
+            system("cls")
+            print("Available commands \n\n- Add item \n- Inventory (Show inventory)\n")
+            command = input("Enter a command: ")
+            if command.strip().casefold() == "additem" or command.strip().casefold() == "add item":
+                addItem()
+            elif command.strip().casefold() == "inventory":
+                showInventory()
+            ## Game code tba
+            else:
+                system("cls")
+                print("Invalid command!")
+                input("Press any key to continue...")
+        else:
+            break
