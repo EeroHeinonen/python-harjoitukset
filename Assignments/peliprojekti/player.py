@@ -1,11 +1,13 @@
 from os import system
 
+##Projekti 1
 name = input("Enter your name: ")
 command = ""
 difficulty = "Normal"
 inventory = []
 item = "0"
 
+##Projekti 3
 def settingsFunc():
     global command
     while command.strip().casefold() != "back":
@@ -24,6 +26,7 @@ def settingsFunc():
 
     return difficulty
 
+##Projekti 3
 def difficultySetting():
     global difficulty
     global command
@@ -50,6 +53,7 @@ def difficultySetting():
             input('Press any key to continue...')
             system("cls")
 
+##Projekti 3
 def addItem():
     global item
     while item != "BACK":
@@ -67,6 +71,7 @@ def addItem():
 
     return item
 
+##Projekti 3
 def showInventory():
     system("cls")
     global item
@@ -81,6 +86,7 @@ while name == "":
     system("cls")
     name = input("Enter your name: ")
     if name != "":
+        ##Projekti 2
         age = input("Enter your age: ")
         while age == "":
             system("cls")
