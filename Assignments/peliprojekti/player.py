@@ -67,7 +67,7 @@ def addItem():
                 print("\nItem added to inventory!\n")
                 input('Press any key to continue...')
             else:
-                print("\nInvalid item!\n")
+                print("\nItem name can not be empty!\n")
 
     return item
 
