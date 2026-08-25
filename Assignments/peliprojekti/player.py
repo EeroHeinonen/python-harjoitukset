@@ -79,6 +79,7 @@ def showInventory():
         print("The list is empty!")
     input('Press any key to continue...')
 
+##Projekti 3
 def play():
     global command
     while command != "back":
