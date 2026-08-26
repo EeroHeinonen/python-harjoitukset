@@ -7,6 +7,8 @@ command = ""
 difficulty = "Normal"
 inventory = []
 item = "0"
+global a
+a = False
 
 ##Projekti 3
 def settings():
@@ -16,13 +18,10 @@ def settings():
         print("Settings available: \n\n- Difficulty\n")
         print('"Back" to go back\n')
         command = input("Enter a setting to change: ")
-
         if command.strip().casefold() == "difficulty":
             difficultySetting()
-
         elif command.strip().casefold() == "back":
             pass
-
         else:
             badCommand() 
 
@@ -106,38 +105,41 @@ while name == "":
     input("Press any key to continue...")
     system("cls")
     name = input("Enter your name: ")
-if name != "":
+else:
     ##Projekti 2
-    age = input("Enter your age: ")
-    while age == "":
-        system("cls")
-        print("You can not input an empty age!")
-        input("Press any key to continue...")
-        system("cls")
-        age = input("Enter your age: ")
-        
-    if int(age) < 12:
-        system("cls")
-        print("The minimum age is 12!")
-    else:
-        while command.strip().casefold() != "stop" or command.strip().casefold() != "exit" or command.strip().casefold() != "quit":
+    while a == False:
+        try:
             system("cls")
-            print(r"""
+            age = int(input("Enter your age: "))
+            a = True
+        except ValueError:
+            system("cls")
+            print("You can not input an age that is not a number.")
+            input("Press any key to continue...")
+            a = False
+        else:
+            if int(age) < 12:
+                system("cls")
+                print("The minimum age is 12!")
+            else:
+                while command.strip().casefold() != "stop" or command.strip().casefold() != "exit" or command.strip().casefold() != "quit":
+                    system("cls")
+                    print(r"""
 
-                                             _  _  ____  __     ___  __   _  _  ____ 
-                                            / )( \(  __)(  )   / __)/  \ ( \/ )(  __)
-                                            \ /\ / ) _) / (_/\( (__(  O )/ \/ \ ) _) 
-                                            (_/\_)(____)\____/ \___)\__/ \_)(_/(____)
+ _  _  ____  __     ___  __   _  _  ____ 
+/ )( \(  __)(  )   / __)/  \ ( \/ )(  __)
+\ /\ / ) _) / (_/\( (__(  O )/ \/ \ ) _) 
+(_/\_)(____)\____/ \___)\__/ \_)(_/(____)
 
 
-                    """)
-            print("Available commands: \n\n- Play (play) \n- Settings (settings) \n- Quit (quit, exit, stop)\n")
-            command = input("Enter a command: ")
-            if command.strip().casefold() == "":
-                badCommand()
-            elif command.strip().casefold() == "settings":
-                settings()
-            elif command.strip().casefold() == "play":
-                play()
-            elif command.strip().casefold() == "stop" or command.strip().casefold() == "exit" or command.strip().casefold() == "quit":
-                break
+                            """)
+                    print("Available commands: \n\n- Play (play) \n- Settings (settings) \n- Quit (quit, exit, stop)\n")
+                    command = input("Enter a command: ")
+                    if command.strip().casefold() == "":
+                        badCommand()
+                    elif command.strip().casefold() == "settings":
+                        settings()
+                    elif command.strip().casefold() == "play":
+                        play()
+                    elif command.strip().casefold() == "stop" or command.strip().casefold() == "exit" or command.strip().casefold() == "quit":
+                        break
