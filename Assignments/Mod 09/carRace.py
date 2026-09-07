@@ -26,6 +26,7 @@ for i in range(10):
     cars.append(Car(f"{random.choice(letters) + random.choice(letters) + random.choice(letters)}-{str(random.randint(1, 9)) + str(random.randint(1, 9)) + str(random.randint(1, 9))}", random.randint(100, 200), 0, 0))
 
 def race():
+    system("cls")
     i = 0
     for car in cars:
 
@@ -36,17 +37,25 @@ def race():
         if changeInSpeed < 0:
             changed = "slowed down"
             changedSpeed = str(changeInSpeed)[1:]
+        elif changeInSpeed == 0:
+            changed = "maintained their speed"
         else:
             changed = "sped up"
             changedSpeed = changeInSpeed
-
-        print(f"{cars[i].registryNum} {changed} by {changedSpeed} km/h, their current speed is {cars[i].currentSpeed} km/h and they have so far traveled for {cars[i].distanceTraveled} km(s)\n")
+        if changeInSpeed != 0:
+            print(f"{cars[i].registryNum} {changed} by {changedSpeed} km/h, their current speed is {cars[i].currentSpeed} km/h and they have so far traveled for {cars[i].distanceTraveled} km(s)\n")
+        else:
+            print(f"{cars[i].registryNum} {changed} at {cars[i].currentSpeed} km/h and they have so far traveled for {cars[i].distanceTraveled} km(s)\n")
         i += 1
 
-        if car.distanceTraveled >= 10000:
+        if car.distanceTraveled >= 100:
             system("cls")
-            print(f"Car {i} with the registry number {car.registryNum} won the race!")
-            break
+            print(f"\nCar {i} with the registry number {car.registryNum} won the race!")
+            input("Press any key to continue...")
+            for car in cars:
+                car.distanceTraveled = 0
+                car.currentSpeed = 0
+            return
 
     input("Press any key to continue...")
 
