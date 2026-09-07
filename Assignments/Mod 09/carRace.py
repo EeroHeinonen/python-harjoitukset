@@ -28,10 +28,6 @@ for i in range(10):
 def race():
     i = 0
     for car in cars:
-        if cars[i].distanceTraveled >= 100:
-            system("cls")
-            print(f"{cars[i].registryNum} won the race!")
-            break
 
         changeInSpeed = random.randint(-10, 15)
         cars[i].accelerate(changeInSpeed)
@@ -47,13 +43,18 @@ def race():
         print(f"{cars[i].registryNum} {changed} by {changedSpeed} km/h, their current speed is {cars[i].currentSpeed} km/h and they have so far traveled for {cars[i].distanceTraveled} km(s)\n")
         i += 1
 
+        if car.distanceTraveled >= 10000:
+            system("cls")
+            print(f"Car {i} with the registry number {car.registryNum} won the race!")
+            break
+
     input("Press any key to continue...")
 
 while command.strip().casefold() != "q":
     system("cls")
     i = 0
     for car in cars:
-        print(f"{cars[i].registryNum} Top speed: {cars[i].topSpeed}")
+        print(f"Car {i + 1}\nRegistry number: {cars[i].registryNum}\nTop speed: {cars[i].topSpeed}\n")
         i += 1
     print("\nAvailable commands: \n- Race (race)\n- Quit (q)\n")
     command = input("Enter a command: ")
