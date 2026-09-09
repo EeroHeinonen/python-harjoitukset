@@ -48,7 +48,7 @@ def race():
             print(f"{cars[i].registryNum} {changed} at {cars[i].currentSpeed} km/h and they have so far traveled for {cars[i].distanceTraveled} km(s)\n")
         i += 1
 
-        if car.distanceTraveled >= 100:
+        if car.distanceTraveled >= 10000:
             system("cls")
             print(f"\nCar {i} with the registry number {car.registryNum} won the race!")
             input("Press any key to continue...")
