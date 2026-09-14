@@ -1,3 +1,4 @@
+from multiprocessing import Value
 from os import system
 import time
 
@@ -12,13 +13,13 @@ class Elevator:
         self.lowestFloor = lowestFloor
 
     def moveUp(self):
+        print(f"Rising...\nThe elevator is currently at floor {self.currentFloor}.\n")
         self.currentFloor += 1
-        print("Rising...\n")
         time.sleep(0.75)
 
     def moveDown(self):
+        print(f"Lowering...\nThe elevator is currently at floor {self.currentFloor}.\n")
         self.currentFloor -= 1
-        print("Lowering...\n")
         time.sleep(0.75)
 
 while highestFloor == "":
@@ -30,7 +31,7 @@ while highestFloor == "":
             print(f"The value must be higher than 0!")
             input("Press any key to continue...")
             highestFloor = ""
-    except :
+    except ValueError:
         system("cls")
         print("The value must be a number!")
         input("Press any key to continue...")
@@ -51,7 +52,7 @@ else:
                 input("Press any key to continue...")
                 lowestFloor = ""
 
-        except :
+        except ValueError:
             system("cls")
             print("The value must be a number!")
             input("Press any key to continue...")
@@ -63,7 +64,7 @@ else:
         while targetFloor.strip().casefold() != "q":
             system("cls")
             print(f"The current floor of the elevator is: {elev.currentFloor}")
-            print('\nAvailable commands:\n- Up\n- Down\n- Target floor\n- "q" to quit\n')
+            print('\nAvailable commands:\n- Up\n- Down\n- Target floor\n- "q" or "quit" to quit\n')
 
             targetFloor = input("Enter command or target floor: ")
 
@@ -120,10 +121,11 @@ else:
                     print(f"Elevator has reached floor {int(targetFloor)}!")
                     input("Press any key to continue...")
 
-            except :
-                if targetFloor.strip().casefold() == "q":
+            except ValueError:
+                if targetFloor.strip().casefold() == "q" or targetFloor.strip().casefold() == "quit":
                     system("cls")
                     print("Goodbye!")
+                    break
 
                 else:
                     system("cls")
