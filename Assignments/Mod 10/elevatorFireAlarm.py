@@ -1,6 +1,7 @@
 from multiprocessing import Value
 from os import system
 import time
+import random
 
 highestFloor = ""
 lowestFloor = ""
@@ -8,6 +9,7 @@ targetFloor = ""
 targetElev = ""
 currentFloor = ""
 numOfElev = ""
+chanceOfFire = 0
 
 class House:
     def __init__(self, numOfElev, highestFloor, lowestFloor, targetElev):
@@ -18,6 +20,7 @@ class House:
         self.elevList = []
 
     def fireAlarm(self):
+        system("cls")
         print("Fire alarm! All elevators called to the bottom floor!")
         i = 0
         for elev in house.elevList:
@@ -31,15 +34,14 @@ class Elevator:
         self.currentFloor = lowestFloor
 
     def moveUp(self):
-        print(f"Rising...\nElevator {e} is currently at floor {self.currentFloor}.\n")
+        print(f"Rising...\nElevator is currently at floor {self.currentFloor}.\n")
         self.currentFloor += 1
-        e += 1
         time.sleep(1)
 
     def moveDown(self):
-        print(f"Lowering...\nElevator {e} is currently at floor {self.currentFloor}.\n")
+        global e
+        print(f"Lowering...\nElevator is currently at floor {self.currentFloor}.\n")
         self.currentFloor -= 1
-        e += 1
         time.sleep(1)
 while numOfElev == "":
     system("cls")
@@ -135,7 +137,13 @@ else:
                             targetFloor = input("Enter command or target floor: ")
 
                             try:
-                                if targetFloor.strip().casefold() == "up":
+                                chanceOfFire = random.randint(0,10)
+
+                                if chanceOfFire == 1:
+                                    house.fireAlarm()
+                                    break
+
+                                elif targetFloor.strip().casefold() == "up":
                                     system("cls")
                                     if house.elevList[int(targetElev) - 1].currentFloor == house.highestFloor:
                                         print(f'The elevator can not move past the highest floor "({house.highestFloor})"!')
