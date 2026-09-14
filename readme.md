@@ -35,3 +35,17 @@ Tehtävät 1 - 4 tehty ja ajettu.
 Mod 7
 
 Tehtävät 1 - 6 tehty ja ajettu.
+
+Projekti tehtävä 3 tehty.
+
+Mod 8
+
+Tehtävät 1 - 3 tehty ja ajettu.
+
+Mod 9
+
+Tehtävät 1 - 4 tehty ja ajettu.
+
+Mod 10
+
+Tehtävät 
