@@ -137,7 +137,7 @@ else:
                             targetFloor = input("Enter command or target floor: ")
 
                             try:
-                                chanceOfFire = random.randint(0,10)
+                                chanceOfFire = random.randint(1,20)
 
                                 if chanceOfFire == 1:
                                     house.fireAlarm()
