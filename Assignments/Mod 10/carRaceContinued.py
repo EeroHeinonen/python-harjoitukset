@@ -36,7 +36,7 @@ class Racing:
         for car in R.participants:
             if car.distanceTraveled >= R.raceLen:
                 print(f"The race is over! {car.registryNum} has won!")
-                return True
+                over = True
             else:
                 over = False
         return over
@@ -65,7 +65,7 @@ raceName = input("Please input the race name: ")
 raceLen = int(input("Please input the length of the race: "))
 system("cls")
 R = Racing(raceName, raceLen, cars)
-while command.strip().casefold() != "q":
+while command.strip().casefold() != "q" and R.raceOver() == False:
     if R.raceOver() == True:
         break
     else:
@@ -87,7 +87,6 @@ while command.strip().casefold() != "q":
                     for i in R.participants:
                         i.distanceTraveled = 0
                         i.currentSpeed = 0
-                    break
             else:
                 R.printCurrent()
                 timeTraveled = 0
