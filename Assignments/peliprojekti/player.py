@@ -90,6 +90,8 @@ def play():
             addItem()
         elif command.strip().casefold() == "inventory":
             showInventory()
+        elif command.strip().casefold() == "back":
+            pass
         else:
             badCommand()
 
