@@ -17,20 +17,17 @@ class Racing:
         self.participants = cars
 
     def race(self):
-        global timeTraveled
         for car in self.participants:
             changeInSpeed = random.randint(-10, 15)
             car.accelerate(changeInSpeed)
             car.travel(1)
 
-        timeTraveled += 1
-
     def printCurrent(self):
-        if R.raceOver() == False:
-            for car in self.participants:
-                print(f"{car.registryNum} has so far traveled for {car.distanceTraveled} km(s) and current speed is {car.currentSpeed}\n")
+        system("cls")
+        for car in self.participants:
+            print(f"{car.registryNum} has so far traveled for {car.distanceTraveled} km(s) and current speed is {car.currentSpeed}\n")
 
-            input("Press any key to continue...")
+        input("Press any key to continue...")
 
     def raceOver(self):
         global winner
@@ -84,9 +81,10 @@ else:
             while timeTraveled < 10:
                 R.race()
                 R.raceOver()
+                timeTraveled += 1
             else:
                 R.printCurrent()
                 timeTraveled = 0
     else:
-        system("cls")
+        R.printCurrent()
         print(f"The race is over! {winner} has won!")
