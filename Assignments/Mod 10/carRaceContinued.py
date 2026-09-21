@@ -5,7 +5,6 @@ import time
 letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 command = ""
 timeTraveled = 0
-over = False
 
 cars = []
 
@@ -17,29 +16,28 @@ class Racing:
 
     def race(self):
         global timeTraveled
-        for car in R.participants:
+        for car in self.participants:
 
             changeInSpeed = random.randint(-10, 15)
             car.accelerate(changeInSpeed)
             car.travel(1)
+            R.raceOver()
 
         timeTraveled += 1
 
     def printCurrent(self):
-        if R.raceOver() == False:
-            for car in R.participants:
+        if R.raceOver == False:
+            for car in self.participants:
                 print(f"{car.registryNum} has so far traveled for {car.distanceTraveled} km(s) and current speed is {car.currentSpeed}\n")
 
             input("Press any key to continue...")
 
     def raceOver(self):
-        for car in R.participants:
+        for car in self.participants:
             if car.distanceTraveled >= R.raceLen:
-                print(f"The race is over! {car.registryNum} has won!")
-                over = True
+                return True
             else:
-                over = False
-        return over
+                return False
 
 
 class Car:
@@ -65,28 +63,22 @@ raceName = input("Please input the race name: ")
 raceLen = int(input("Please input the length of the race: "))
 system("cls")
 R = Racing(raceName, raceLen, cars)
-while command.strip().casefold() != "q" and R.raceOver() == False:
+while command.strip().casefold() != "q":
+    print(R.raceOver())
     if R.raceOver() == True:
+        print(f"The race is over! {car.registryNum} has won!")
         break
     else:
-        system("cls")
         print(f"Race: {raceName}\nLength: {raceLen}\n\n")
         i = 1
         for car in R.participants:
             print(f"Car {i}\nRegistry number: {car.registryNum}\nTop speed: {car.topSpeed}\n")
             i += 1
         print("\nAvailable commands: \n- Race (race)\n- Quit (q)\n")
-        print(R.raceOver())
-        command = input("Enter a command: ")
+        command = input(f"Enter a command: ")
         if command.strip().casefold() == "race":
             while timeTraveled < 10:
-                if over == False:
-                    R.race()
-                    R.raceOver()
-                else:
-                    for i in R.participants:
-                        i.distanceTraveled = 0
-                        i.currentSpeed = 0
+                R.race()
             else:
                 R.printCurrent()
                 timeTraveled = 0
