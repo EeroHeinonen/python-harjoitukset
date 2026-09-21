@@ -48,4 +48,4 @@ Tehtävät 1 - 4 tehty ja ajettu.
 
 Mod 10
 
-Tehtävät 
+Tehtävät 1-4 tehty ja ajettu.
