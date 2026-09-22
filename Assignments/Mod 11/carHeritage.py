@@ -30,20 +30,23 @@ cars.append(Gas("ACD-123", 165, 32.3, 0, 0, 0, 5.3))
 def travel():
     for car in cars:
         if issubclass(type(car), Electric):
-            if car.batteryCapacity <= 0:
-                car.batteryCapacity = 0
-                car.distance = car.distance
-            else:
+            if car.batteryCapacity > 0:
                 car.batteryCapacity -= (car.usage / 100) * (car.time * car.speed)
                 car.distance += car.time * car.speed
+                distVar = car.distance
+                if car.batteryCapacity <= 0:
+                    car.batteryCapacity = 0
+                    car.distance = distVar
+
         elif issubclass(type(car), Gas):
-            if car.tankCapacity <= 0:
-                car.tankCapacity = 0
-                car.distance = car.distance
-            else:
+            if car.tankCapacity > 0:
                 car.tankCapacity -= (car.usage / 100) * (car.time * car.speed)
                 car.distance += car.time * car.speed
-        
+                distVar = car.distance
+                if car.tankCapacity <= 0:
+                    car.tankCapacity = 0
+                    car.distance = distVar
+
 
 def changeSpeed():
     i = 1
@@ -60,6 +63,7 @@ def changeSpeed():
 def setTimeTraveled():
     i = 1
     for car in cars:
+        car.time = 0
         try:
             time = float(input(f"\nEnter the time to travel in hours for car {i}: "))
             car.time = time
@@ -75,9 +79,16 @@ while command.strip().casefold() != "q":
     system("cls")
     for car in cars:
         if issubclass(type(car), Gas):
-            print(f"Car: {car.registryNum}\nSpeed: {car.speed} km/h\nTop speed: {car.topSpeed} km/h\nDistance traveled: {car.distance} km\nUsage: {car.usage} l/100 km\nCapacity: {car.tankCapacity:.2f} l\n")
+            if car.tankCapacity > 0:
+                print(f"Car: {car.registryNum}\nSpeed: {car.speed} km/h\nTop speed: {car.topSpeed} km/h\nDistance traveled: {car.distance} km\nUsage: {car.usage} l/100 km\nCapacity: {car.tankCapacity:.2f} l\n")
+            else:
+                print(f"{car.registryNum} has ran out of fuel and therefore can't move!")
         elif issubclass(type(car), Electric):
-            print(f"Car: {car.registryNum}\nSpeed: {car.speed} km/h\nTop speed: {car.topSpeed} km/h\nDistance traveled: {car.distance} km\nUsage: {car.usage} kWh/100 km\nCapacity: {car.batteryCapacity:.2f} kWh\n")
+            if car.batteryCapacity > 0:
+                print(f"Car: {car.registryNum}\nSpeed: {car.speed} km/h\nTop speed: {car.topSpeed} km/h\nDistance traveled: {car.distance} km\nUsage: {car.usage} kWh/100 km\nCapacity: {car.batteryCapacity:.2f} kWh\n")
+            else:
+                print(f"{car.registryNum} has ran out of energy and therefore can't move!")
+
     print("\nAvailable commands: \n- Set the speed (speed)\n- Set the traveled time (time)\n- Quit (q)\n")
     command = input("Enter a command: ")
     if command.strip().casefold() == "speed":
