@@ -49,3 +49,7 @@ Tehtävät 1 - 4 tehty ja ajettu.
 Mod 10
 
 Tehtävät 1-4 tehty ja ajettu.
+
+Mod 11
+
+Tehtävät 1 ja 2 tehty ja ajettu.
