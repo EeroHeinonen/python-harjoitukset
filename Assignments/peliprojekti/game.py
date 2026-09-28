@@ -1,7 +1,8 @@
 #Used to clear console using system("cls")
 from os import system
 #Importing other created modules
-from Modules import settingsMenu, badCommand, play, player
+from Modules import settingsMenu, badCommand, play, p
+from Modules import player
 #Importing the "pyfiglet" module for the creation of ascii art from input
 import pyfiglet
 
