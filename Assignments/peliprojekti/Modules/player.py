@@ -2,8 +2,8 @@
 from os import system
 #Importin method from sibling module
 from .bc import badCommand
-from .room import rooms
 from .item import Item
+from .room import livingRoom
 
 #Initiates the Player class
 class PlayerInv:
@@ -11,14 +11,14 @@ class PlayerInv:
         self.inventory = []
         self.currentRoom = currentRoom
 
-currentRoom = rooms["livingroom"]
+currentRoom = livingRoom
 
 #Creates the player object
 p = PlayerInv([], currentRoom)
 
 vase = Item("vaasi", 15, 1)
 shovel = Item("lapio", 10, 10)
-rooms["livingroom"].items.extend([vase, shovel])
+livingRoom.items.extend([vase, shovel])
 
 #Displays the player inventory
 def showInventory():
