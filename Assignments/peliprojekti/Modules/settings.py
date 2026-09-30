@@ -13,16 +13,15 @@ def settingsMenu():
     global settingsCommand
     settingsCommand = ""
     #While loop to display the "settings" menu
-    while settingsCommand.strip().casefold() != "back":
+    while settingsCommand.strip().casefold() != "q":
         system("cls")
-        print("Settings available: \n\n- Difficulty\n")
-        print('"Back" to go back\n')
+        print('Settings available: \n\n- Difficulty\n"q" to go back\n')
         settingsCommand = input("Enter a setting to change: ")
         #Displays the "difficulty settings" menu
         if settingsCommand.strip().casefold() == "difficulty":
             difficultySetting()
         #Breaks the while loop in the case that the player input is "back"
-        elif settingsCommand.strip().casefold() == "back":
+        elif settingsCommand.strip().casefold() == "q":
             break
         #Displays an "Invalid command" message if the player input is not recognized
         else:
@@ -36,11 +35,10 @@ def difficultySetting():
     global settingsCommand
     global difficulty
     #While loop to display the "difficulty settings" menu
-    while settingsCommand.strip().casefold() != "back":
+    while settingsCommand.strip().casefold() != "q":
         system("cls")
         print("Current difficulty: " + difficulty)
-        print("Difficulty settings: \n\n- Easy \n- Normal \n- Hard\n")
-        print('"Back" to go back')
+        print('Difficulty settings: \n\n- Easy \n- Normal \n- Hard\n"q" to go back\n')
         settingsCommand = input("Enter a difficulty option: ")
         #Sets the game difficulty to easy
         if settingsCommand.strip().casefold() == "easy":
@@ -52,7 +50,7 @@ def difficultySetting():
         elif settingsCommand.strip().casefold() == "hard":
             difficulty = "Hard"
         #Returns from the "difficulty settings" menu to the "settings" menu
-        elif settingsCommand.strip().casefold() == "back":
+        elif settingsCommand.strip().casefold() == "q":
             settingsMenu()
         #Displays an "Invalid command" message if the player input is not recognized
         else:

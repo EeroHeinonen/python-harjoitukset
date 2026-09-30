@@ -1,8 +1,7 @@
 #Used to clear console using system("cls")
 from os import system
-#Importing other created modules
-from Modules import settingsMenu, badCommand, play, p, Room
-from Modules import player
+#Importing methods, objects and variables from Modules
+from Modules import settingsMenu, badCommand, play, p, Room, Player
 #Importing the "pyfiglet" module for the creation of ascii art from input
 import pyfiglet
 
@@ -38,13 +37,16 @@ else:
                 system("cls")
                 print("The minimum age is 12!")
             else:
-                assignNeighbors()
+                p.name = name
+                p.age = age
+                p.saveData()
                 #Main while loop to display the main menu
-                while command.strip().casefold() != "stop" or command.strip().casefold() != "exit" or command.strip().casefold() != "quit":
+                while command.strip().casefold() != "stop" or command.strip().casefold() != "exit" or command.strip().casefold() != "quit" or command.strip().casefold() != "q":
                     system("cls")
+                    #Fetches the player's data from the save file
                     #Converts the player name to ascii art and prints it on the main menu
-                    print(pyfiglet.figlet_format("Welcome  " + name.title()))
-                    print("Available commands: \n\n- Play (play) \n- Settings (settings) \n- Quit (quit, exit, stop, q)\n")
+                    print(pyfiglet.figlet_format("Welcome  " + p.loadData()["Player"].title()))
+                    print("Available commands: \n\n- Play (play) \n- Settings (settings) \n- Save (save) \n- Load (load) \n- Quit (quit, exit, stop, q)\n")
                     command = input("Enter a command: ")
                     #Displays the "settings" menu for the player
                     if command.strip().casefold() == "settings":
@@ -52,6 +54,21 @@ else:
                     #Displays the "play" menu for the player
                     elif command.strip().casefold() == "play":
                         play()
+                    #Saves the game
+                    elif command.strip().casefold() == "save":
+                        p.saveData()
+                        system("cls")
+                        print("Saved succesfully!")
+                        input("Press any key to continue...")
+                    #Displays the "play" menu for the player
+                    elif command.strip().casefold() == "load":
+                        p.loadData()
+                        system("cls")
+                        print(f"Name: {p.loadFile["Player"].title()}\nAge: {p.loadFile["Age"]}\nCurrent room: {p.loadFile["Room"].name}")
+                        print("Inventory: ")
+                        for item in p.loadFile["Items"]:
+                            print(f"- {item.name.title()}")
+                        input("\nPress any key to continue...")
                     #Stops the program if one of the "quitting" keywords is inputted by the player
                     elif command.strip().casefold() == "stop" or command.strip().casefold() == "exit" or command.strip().casefold() == "quit" or command.strip().casefold() == "q":
                         break

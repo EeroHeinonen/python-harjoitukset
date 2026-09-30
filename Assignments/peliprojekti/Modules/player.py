@@ -1,23 +1,56 @@
 #Used to clear console using system("cls")
 from os import system
-#Importin method from sibling module
-from .bc import badCommand
+#Importing methods from sibling modules
 from .item import Item
-from .room import livingRoom
+from .room import assignNeighbors, livingRoom
+#Importing the json library
+import json
+import pickle
 
 #Initiates the Player class
-class PlayerInv:
-    def __init__(self, inventory, currentRoom):
+class Player:
+    def __init__(self, name, age, inventory, currentRoom):
+        self.name = name
+        self.age = age
         self.inventory = []
         self.currentRoom = currentRoom
+
+    def saveData(self):
+        try:
+            with open("save.pkl", "wb") as saveFile:
+                data = {
+                    "Player": self.name,
+                    "Age": self.age,
+                    "Items": self.inventory,
+                    "Room": self.currentRoom
+                    }
+                pickle.dump(data, saveFile, protocol=pickle.HIGHEST_PROTOCOL)
+        except FileNotFoundError:
+            print("File not found!")
+        except IOError:
+            print("There was an error processing the file!")
+
+    def loadData(self):
+        try:
+            with open("save.pkl", "rb") as saveFile:
+                self.loadFile = pickle.load(saveFile)
+            return self.loadFile
+        except FileNotFoundError:
+            print("File not found!")
+        except IOError:
+            print("There was an error processing the file!")
+
+
 
 currentRoom = livingRoom
 
 #Creates the player object
-p = PlayerInv([], currentRoom)
+p = Player("", 0, [], currentRoom)
 
+#Creates item objects and assigns them values ex. name, damage, uses
 vase = Item("vaasi", 15, 1)
 shovel = Item("lapio", 10, 10)
+#Adds the items to the room's itempool
 livingRoom.items.extend([vase, shovel])
 
 #Displays the player inventory
@@ -25,7 +58,8 @@ def showInventory():
     system("cls")
     #Checks if the inventory is not empty
     if p.inventory:
-        #Displays each item inside the list "inventory" in a neatly formatted way
+        #Fetches the player's data from the save file
+        #Displays each item inside the player "inventory" in a neatly formatted way
         for item in p.inventory:
             print(f"- {item.name.title()}")
     #Displays a message informing the player that their inventory is empty
@@ -35,22 +69,23 @@ def showInventory():
 
 def pickUp():
     pickUpItem = ""
-    while pickUpItem.strip().casefold() != "back":
+    while pickUpItem.strip().casefold() != "q":
         system("cls")
-        print(f"{p.currentRoom}\n")
+        print(f"{p.loadFile["Room"].name}\n")
         #Checks if the room is not empty
         if p.currentRoom.items:
             #Displays each item inside the list "items" in a neatly formatted way
             for item in p.currentRoom.items:
                 print(f"- {item.name.title()}")
-            print('\nInput "back" to go back.')
-            pickUpItem = input("Input item name to pick up: ")
+            print('\nInput "q" to go back.')
+            pickUpItem = input("or input item name to pick up: ")
             #Adds the player input as an item to their inventory, if it is found in the room
             for item in p.currentRoom.items:
                 try:
                     if pickUpItem.strip().casefold() == item.name.strip().casefold():
                         p.inventory.append(item)
                         p.currentRoom.items.remove(item)
+                        p.saveData()
                         system("cls")
                         print("Item added to inventory!\n")
                         pickUpItem = ""
@@ -64,10 +99,10 @@ def pickUp():
             break
 
 def use():
-    system("cls")
     use = ""
     #While loop to continue running while player input is something else than "back"
-    while use.strip().casefold() != "back":
+    while use.strip().casefold() != "q":
+        system("cls")
         #Check if the player's inventory is empty
         if p.inventory:
             pass
@@ -75,8 +110,8 @@ def use():
             print("Available items: \n")
             for item in p.inventory:
                 print(f"- {item.name.title()}")
-            print('Input "back" to go back.')
-            use = input("Input the item to be used: ")
+            print('\nInput "q" to go back.')
+            use = input("or input the item to be used: ")
             #For loop to check if player input exists in the player inventory
             for item in p.inventory:
                 if use.strip().casefold() == item.name.strip().casefold():
@@ -86,11 +121,13 @@ def use():
                         print("Item used!")
                         input("Press any key to continue...")
                         item.uses -= 1
+                        p.saveData()
                         #Remove item from player inventory, if it's uses is 0
                         if item.uses == 0:
                             system("cls")
                             print("Item is out of uses and is destroyed!")
                             p.inventory.remove(item)
+                            p.saveData()
                             input("Press any key to continue...")
 
         else:
@@ -100,13 +137,23 @@ def use():
 
 def move():
     directionToMove = ""
+    #While loop to ask player for their movement input
     while directionToMove != "q":
         system("cls")
-        directionToMove = input("Input the direction to move to: ")
+        directionToMove = input('Input "q" or "quit" to go back \nor input the direction to move to: ')
 
-        if directionToMove.strip().casefold() in rooms[p.currentRoom.name]:
-            p.currentRoom = rooms[p.currentRoom][directionToMove]
-        elif directionToMove.strip().casefold() == "back":
+        #Checks if the movement input is possible
+        if directionToMove.strip().casefold() in p.currentRoom.neighbors:
+            p.currentRoom = p.currentRoom.neighbors[directionToMove.strip().casefold()]
+            p.saveData()
             break
+        
+        #Breaks out of the loop if player input is either "quit" or "q"
+        elif directionToMove.strip().casefold() == "quit" or directionToMove.strip().casefold() == "q":
+            break
+
         else:
-            badCommand()
+            system("cls")
+            directionToMove = ""
+            print("Direction not available!")
+            input("Press any key to continue...")
