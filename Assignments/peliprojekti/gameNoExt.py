@@ -10,10 +10,10 @@ age = ""
 system("cls")
 command = ""
 
-with open("ohjeet.txt", "r") as instructions:
+with open("Assignments/peliprojekti/ohjeet.txt", "r") as instructions:
     ins = instructions.read()
 
-with open("tarina.txt", "r") as intro:
+with open("Assignments/peliprojekti/tarina.txt", "r") as intro:
     intro = intro.read()
 
 #While loop until player inputs a name that isn't empty

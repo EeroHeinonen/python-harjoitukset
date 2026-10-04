@@ -19,7 +19,7 @@ class Player:
     #Saves the player data using pickle
     def saveData(self):
         try:
-            with open("save.pkl", "wb") as saveFile:
+            with open("Assignments/peliprojekti/save.pkl", "wb") as saveFile:
                 #Sets the data to be saved values
                 data = {
                     "Player": self.name,
@@ -43,7 +43,7 @@ class Player:
     def loadData(self):
         try:
             #Loads the data from "save.pkl" and returns the data as "loadFile"
-            with open("save.pkl", "rb") as saveFile:
+            with open("Assignments/peliprojekti/save.pkl", "rb") as saveFile:
                 self.loadFile = pickle.load(saveFile)
             return self.loadFile
         #Error handling if file does not exist, or if there is another error
