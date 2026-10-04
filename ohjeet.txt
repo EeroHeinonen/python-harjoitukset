@@ -1,0 +1,7 @@
+The player can move "up", "down", "left" and "right" inside the "rooms".
+
+The objective of the game is to reach the last "room", which is the Haaparanta candy shop.
+
+The player can use items in order to defeat enemies, or to heal themselves.
+
+The game tells the player all the available commands in each menu.

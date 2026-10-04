@@ -1,0 +1,6 @@
+In the year 2083, Finland has banned the usage of salmiakki, because it's too reminiscent of intoxicating substances.
+Now the only way to get salmiakki is from the Haaparanta candy store.
+
+Your mission is to travel through Finland and reach the Haaparanta candy store. The only option for travel is walking.
+Motorized vehicles can not be used,
+because global warming has reached a critical point at which any greenhouse gasses will cause global destruction.

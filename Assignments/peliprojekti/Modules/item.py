@@ -1,6 +1,15 @@
 #Initiates the class Item
 class Item:
-    def __init__(self, name, dmg, uses):
+    def __init__(self, name, uses):
         self.name = name
-        self.dmg = dmg
         self.uses = uses
+
+class Damaging(Item):
+    def __init__(self, name, dmg, uses):
+        super().__init__(name, uses)
+        self.dmg = dmg
+
+class Healing(Item):
+    def __init__(self, name, healing, uses):
+        super().__init__(name, uses)
+        self.healing = healing

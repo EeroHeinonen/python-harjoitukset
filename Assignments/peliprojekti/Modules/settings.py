@@ -2,6 +2,7 @@
 from os import system
 #Importin method from sibling module
 from .bc import badCommand
+from .player import p
 
 #Sets common variables
 settingsCommand = ""
@@ -34,6 +35,7 @@ def difficultySetting():
     #Sets the variables to be used across methods
     global settingsCommand
     global difficulty
+    global difMult
     #While loop to display the "difficulty settings" menu
     while settingsCommand.strip().casefold() != "q":
         system("cls")
@@ -43,15 +45,19 @@ def difficultySetting():
         #Sets the game difficulty to easy
         if settingsCommand.strip().casefold() == "easy":
             difficulty = "Easy"
+            p.difMult = 0.75
         #Sets the game difficulty to normal
         elif settingsCommand.strip().casefold() == "normal":
             difficulty = "Normal"
+            p.difMult = 1
         #Sets the game difficulty to hard
         elif settingsCommand.strip().casefold() == "hard":
             difficulty = "Hard"
+            p.difMult = 1.5
         #Returns from the "difficulty settings" menu to the "settings" menu
         elif settingsCommand.strip().casefold() == "q":
             settingsMenu()
         #Displays an "Invalid command" message if the player input is not recognized
         else:
             badCommand()
+        p.saveData()
