@@ -23,6 +23,6 @@ peliprojekti/
 ├── save.pkl
 ├── tarina.txt
 └── Tasks/
-├── gameProject1/
-└── gameProject2/
+  ├── gameProject1/
+  └── gameProject2/
 ```
