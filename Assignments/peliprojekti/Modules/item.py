@@ -13,3 +13,7 @@ class Healing(Item):
     def __init__(self, name, healing, uses):
         super().__init__(name, uses)
         self.healing = healing
+
+class Money(Item):
+    def __init__(self, amount):
+        self.amount = amount

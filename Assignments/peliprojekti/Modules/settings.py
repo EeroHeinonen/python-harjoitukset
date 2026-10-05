@@ -60,4 +60,3 @@ def difficultySetting():
         #Displays an "Invalid command" message if the player input is not recognized
         else:
             badCommand()
-        p.saveData()

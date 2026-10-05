@@ -1,7 +1,14 @@
-The player can move "up", "down", "left" and "right" inside the "rooms".
+The player can move "up", "down", "left" and "right" from the "rooms".
 
-The objective of the game is to reach the last "room", which is the Haaparanta candy shop.
+The objective of the game is to reach the last "room", which is the Haaparanta candy shop and have enough money to buy the salmiakki (100 €).
+
+The player must map out the "rooms" themselves in order to find the way to the Haaparanta candy shop.
 
 The player can use items in order to defeat enemies, or to heal themselves.
 
-The game tells the player all the available commands in each menu.
+Enemies can drop items or money upon being defeated.
+
+Each time the player attempts(!) to do an action ex. pick up item(s), move from "room" to "room", use an item, 
+the enemies will have their "turn" and will attempt to attack you. (This includes inputting an invalid command.)
+
+The game informs the player of all the available commands in each menu.

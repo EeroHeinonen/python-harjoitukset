@@ -1,6 +1,6 @@
 from .settings import settingsMenu
 from .bc import badCommand
 from .play import play
-from .player import p, showInventory, pickUp, move, currentRoom, Player
+from .player import showInventory, pickUp, move, p, Player, createPlayer
 from .item import Item
-from .room import Room, assignNeighbors, livingRoom
+from .room import Room, assignNeighbors, livingRoom, store
