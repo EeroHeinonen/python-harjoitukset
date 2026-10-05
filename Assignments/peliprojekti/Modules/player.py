@@ -76,7 +76,7 @@ class Player:
             if os.path.exists(filePath):
                 os.remove(filePath)
                 system("cls")
-                print("Removed!")
+                print("Player data removed!")
                 input("Press any key to continue...")
         except FileNotFoundError:
             print("File not found!")
@@ -110,7 +110,7 @@ def showInventory():
     #Displays a message informing the player that their inventory is empty
     else:
         print("The inventory is empty!")
-    input("Press any key to continue...")
+    input("\nPress any key to continue...")
 
 def pickUp():
     pickUpItem = ""
@@ -158,8 +158,9 @@ def pickUp():
                         input('Press any key to continue...')
                 else:
                     #Add the uses of the new item to the item already in the player inventory to avoid overlap
-                    for instances in p.inventory:
-                        instances.uses += item.uses
+                    for instance in p.inventory:
+                        if pickUpItem.strip().casefold() == instance.name.strip().casefold():
+                            instance.uses += item.uses
                     #Remove the item from the current room's items list
                     p.currentRoom.items.remove(item)
                     p.saveData()

@@ -1,5 +1,5 @@
 #Importin methods from sibling modules
-from .item import Item, Damaging, Healing, Money
+from .item import Damaging, Healing, Money
 from .enemy import Enemy
 import random
 
@@ -13,7 +13,9 @@ class Room:
 
 #Create the following objects of "Room" and add them to the list "rooms"
 livingRoom = Room("Living room", [], [], {})
+backyard = Room("Backyard", [], [], {})
 kitchen = Room("Kitchen", [], [], {})
+hardwareStore = Room("Backyard", [], [], {})
 street = Room("Street", [], [], {})
 gutter = Room("Gutter", [], [], {})
 tampere = Room("Tampere", [], [], {})
@@ -34,17 +36,21 @@ tornio = Room("Tornio", [], [], {})
 hardwareStore = Room("Hardware store", [], [], {})
 store = Room("Store", [], [], {})
 
-rooms = [livingRoom, street, gutter, tampere, seinäjoki, kokkola, kalajoki, jyväskylä, kuopio, kajaani, suomussalmi, oulu, pudasjärvi, ranua, taivalkoski, kemi, haaparanta, hardwareStore, store]
+rooms = [livingRoom, kitchen, backyard, street, gutter, tampere, seinäjoki, kokkola, kalajoki, jyväskylä, kuopio, kajaani, suomussalmi, oulu, pudasjärvi, ranua, taivalkoski, kemi, haaparanta, hardwareStore, store]
 
 def populateRooms():
     #Create item objects and assigns them values aka. name, damage/healing, uses
     vase = Damaging("vase", 15, 1)
     shovel = Damaging("shovel", 10, 10)
+    shovel2 = Damaging("shovel", 10, 10)
     baseballBat = Damaging("baseball bat", 25, 15)
     hammer = Damaging("hammer", 20, 20)
     baton = Damaging("baton", 30, 99)
     sandwich = Healing("sandwich", 15, 1)
-    candy = Healing("ässä mix hedelmä", 20, 1)
+    sandwich2 = Healing("sandwich", 15, 1)
+    sandwich3 = Healing("sandwich", 15, 1)
+    candy = Healing("candy", 20, 1)
+    candy2 = Healing("candy", 20, 1)
 
     #Create enemy objects
     hobo = Enemy("Homeless", 20, 5, gutter, Money(random.randint(0, 10), "clean"))
@@ -53,11 +59,11 @@ def populateRooms():
     hobo4 = Enemy("Homeless", 20, 5, kalajoki, Money(random.randint(0, 10), "clean"))
     hobo5 = Enemy("Homeless who knows martial arts", 35, 10, ranua, Money(15, "clean"))
     innocentPerson = Enemy("Innocent person", 25, 0, taivalkoski, Money(50, "dirty"))
-    antiEnvironmentalist = Enemy("Anti-environmentalist", 15, 15, tampere, shovel)
-    antiEnvironmentalist2 = Enemy("Anti-environmentalist", 15, 15, jyväskylä, sandwich)
+    antiEnvironmentalist = Enemy("Anti-environmentalist", 15, 15, tampere, shovel2)
+    antiEnvironmentalist2 = Enemy("Anti-environmentalist", 15, 15, jyväskylä, sandwich2)
     antiEnvironmentalist3 = Enemy("Anti-environmentalist", 15, 15, seinäjoki, candy)
-    antiEnvironmentalist4 = Enemy("Anti-environmentalist", 15, 15, oulu, sandwich)
-    antiEnvironmentalist5 = Enemy("Anti-environmentalist", 15, 15, kuopio, candy)
+    antiEnvironmentalist4 = Enemy("Anti-environmentalist", 15, 15, oulu, sandwich3)
+    antiEnvironmentalist5 = Enemy("Anti-environmentalist", 15, 15, kuopio, candy2)
     borderPatrol = Enemy("Border patrol", 40, 30, tornio, baton)
 
     #Add the items to room items
@@ -67,6 +73,7 @@ def populateRooms():
     kajaani.items.append(shovel)
     kemi.items.append(Money(random.randint(10, 15), "clean"))
     kokkola.items.append(Money(random.randint(5, 10), "clean"))
+    backyard.items.append(shovel)
     hardwareStore.items.extend([shovel, baseballBat, hammer, baton])
 
     #Add enemies to room enemies
@@ -86,7 +93,8 @@ def populateRooms():
 #Function to assign the rooms to have "neighbors", which allows player movememnt between rooms using directions
 def assignNeighbors():
     livingRoom.neighbors.update({"up": street, "left": kitchen})
-    kitchen.neighbors.update({"right": livingRoom})
+    kitchen.neighbors.update({"right": livingRoom, "down": backyard})
+    backyard.neighbors.update({"up": kitchen})
     street.neighbors.update({"down": livingRoom, "left": gutter, "up": tampere})
     gutter.neighbors.update({"right": street})
     tampere.neighbors.update({"down": street, "right": jyväskylä, "left": seinäjoki, "up": hardwareStore})

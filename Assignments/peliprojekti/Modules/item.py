@@ -1,4 +1,4 @@
-#Initiates the class Item
+#Initiates the classes Item and subclasses Damaging, Healing and Money
 class Item:
     def __init__(self, name, uses):
         self.name = name

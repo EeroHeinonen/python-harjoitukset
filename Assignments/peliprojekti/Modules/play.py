@@ -7,7 +7,6 @@ import sys
 from .bc import badCommand
 from .player import createPlayer, showInventory, pickUp, use, move, p
 from .room import store, haaparanta
-import random
 
 #Display the "play" menu, from which a player can select to either add to or view their inventory
 def play():

@@ -100,7 +100,8 @@ else:
                                 #Prints all the files in the directory
                                 print("Save files: \n")
                                 for file in os.listdir("Assignments/peliprojekti/saves"):
-                                    print(f"- {file}")
+                                    if file != ".gitkeep":
+                                        print(f"- {file}")
                                 print('\nInput "q" or "quit" to go back')
                                 fileName = input("Input the file name to be loaded: ")
                                 if fileName.strip().casefold() == "q" or fileName.strip().casefold() == "quit":

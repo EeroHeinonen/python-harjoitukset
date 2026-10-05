@@ -1,7 +1,10 @@
 #Used to clear the console using system("cls")
 from os import system
+#Used to exit the game
+import sys
 #Import methods from sibling modules
 from .item import Money
+
 import random
 #Initiate class "Enemy"
 class Enemy:
@@ -19,7 +22,14 @@ class Enemy:
             if hitChance == 3:
                 #Subtract the enemy's damage from the player's health
                 target.health -= self.damage
-                print(f"The enemy damaged you for {self.damage}!")
+                if target.health <= 0:
+                    system("cls")
+                    print("You lost the game!")
+                    input("Press any key to continue...")
+                    target.deleteData(target.name)
+                    sys.exit()
+                else:
+                    print(f"The enemy damaged you for {self.damage}!")
             #Inform the player if the enemy missed
             else:
                 print("The enemy attempted to damage you but missed!")
