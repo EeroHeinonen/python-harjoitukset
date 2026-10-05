@@ -1,6 +1,7 @@
 # Ohjelmisto 1 Python harj.
 
 # Rakenne
+```
 python-harjoitukset/
 ├── Assignments/
 │   ├── Mod 01-02/
@@ -74,6 +75,7 @@ python-harjoitukset/
     └── Tasks/
         ├── gameProject1/
         └── gameProject2/
+```
 
 Eero Heinonen
 
