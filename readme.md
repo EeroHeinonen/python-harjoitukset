@@ -1,78 +1,79 @@
 # Ohjelmisto 1 Python harj.
 
 # Rakenne
--python-harjoitukset
---Assignments
----Mod 01-02
-----hi.py
----Mod 03
-----CircleArea.py
-----RectangleAreaAndPerimeter.py
-----Transmutations.py
-----hi.py
-----numbersSumProductAndMean.py
-----rndCodes.py
----Mod 04
-----bioGenderHemoGlo.py
-----cabin.py
-----fishSize.py
-----leapYear.py
----Mod 05
-----guessGame.py
-----inchToCm.py
-----login.py
-----piApproximation.py
-----smallestAndHighest.py
-----whileDivByThree.py
----Mod 06
-----cities.py
-----dices.py
-----displayNumbers.py
-----primeNumbers.py
----Mod 07
-----diceFunExpanded.py
-----diceFunc.py
-----gallonToLitre.py
-----listFuncAdd.py
-----listOddOut.py
-----pizzaPricePerUnit.py
----Mod 08
-----airports.py
-----nameSet.py
-----seasons.py
----Mod 09
-----carClass.py
-----carClass2.py
-----carClass3.py
-----carRace.py
----Mod 10
-----carRaceContinued.py
-----elevator.py
-----elevatorContinued.py
-----elevatorFireAlarm.py
----Mod 11
-----carHeritage.py
-----publishments.py
---peliprojekti
----Modules
-----__pycache__
-----__init__
-----bc.py
-----enemy.py
-----item.py
-----play.py
-----player.py
-----room.py
-----settings.py
----game.py
----gameNoExt.py
----ohjeet.txt
----readme.md
----save.pkl
----tarina.txt
----Tasks
-----gameProject1
-----gameProject2
+python-harjoitukset/
+├── Assignments/
+│ ├── Mod 01-02/
+│ │ └── hi.py
+│ ├── Mod 03/
+│ │ ├── CircleArea.py
+│ │ ├── RectangleAreaAndPerimeter.py
+│ │ ├── Transmutations.py
+│ │ ├── hi.py
+│ │ ├── numbersSumProductAndMean.py
+│ │ └── rndCodes.py
+│ ├── Mod 04/
+│ │ ├── bioGenderHemoGlo.py
+│ │ ├── cabin.py
+│ │ ├── fishSize.py
+│ │ └── leapYear.py
+│ ├── Mod 05/
+│ │ ├── guessGame.py
+│ │ ├── inchToCm.py
+│ │ ├── login.py
+│ │ ├── piApproximation.py
+│ │ ├── smallestAndHighest.py
+│ │ └── whileDivByThree.py
+│ ├── Mod 06/
+│ │ ├── cities.py
+│ │ ├── dices.py
+│ │ ├── displayNumbers.py
+│ │ └── primeNumbers.py
+│ ├── Mod 07/
+│ │ ├── diceFunExpanded.py
+│ │ ├── diceFunc.py
+│ │ ├── gallonToLitre.py
+│ │ ├── listFuncAdd.py
+│ │ ├── listOddOut.py
+│ │ └── pizzaPricePerUnit.py
+│ ├── Mod 08/
+│ │ ├── airports.py
+│ │ ├── nameSet.py
+│ │ └── seasons.py
+│ ├── Mod 09/
+│ │ ├── carClass.py
+│ │ ├── carClass2.py
+│ │ ├── carClass3.py
+│ │ └── carRace.py
+│ ├── Mod 10/
+│ │ ├── carRaceContinued.py
+│ │ ├── elevator.py
+│ │ ├── elevatorContinued.py
+│ │ └── elevatorFireAlarm.py
+│ └── Mod 11/
+│ ├── carHeritage.py
+│ └── publishments.py
+│
+└── peliprojekti/
+├── Modules/
+│ ├── __pycache__/
+│ ├── __init__.py
+│ ├── bc.py
+│ ├── enemy.py
+│ ├── item.py
+│ ├── play.py
+│ ├── player.py
+│ ├── room.py
+│ └── settings.py
+├── game.py
+├── gameNoExt.py
+├── ohjeet.txt
+├── readme.md
+├── save.pkl
+├── tarina.txt
+└── Tasks/
+├── gameProject1.py
+└── gameProject2.py
 
 Eero Heinonen
 
