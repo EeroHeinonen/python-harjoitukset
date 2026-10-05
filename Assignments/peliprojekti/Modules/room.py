@@ -63,10 +63,10 @@ def populateRooms():
     #Add the items to room items
     livingRoom.items.append(vase)
     kitchen.items.append(sandwich)
-    street.items.append(Money(random.randint(5, 10)))
+    street.items.append(Money(random.randint(5, 10), "clean"))
     kajaani.items.append(shovel)
-    kemi.items.append(Money(random.randint(10, 15)))
-    kokkola.items.append(Money(random.randint(5, 10)))
+    kemi.items.append(Money(random.randint(10, 15), "clean"))
+    kokkola.items.append(Money(random.randint(5, 10), "clean"))
     hardwareStore.items.extend([shovel, baseballBat, hammer, baton])
 
     #Add enemies to room enemies

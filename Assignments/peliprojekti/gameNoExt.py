@@ -2,7 +2,7 @@
 from os import system
 import os
 #Importing methods, objects and variables from Modules
-from Modules import settingsMenu, badCommand, play, p, Room, Player, livingRoom, createPlayer, assignNeighbors, setEnemyDif
+from Modules import settingsMenu, badCommand, play, p, Room, Player, livingRoom, createPlayer, assignNeighbors, setEnemyDif, populateRooms
 import pickle
 
 #Initial input for the player name
@@ -47,6 +47,8 @@ else:
                 system("cls")
                 #Assign room neighbors using function from room.py
                 assignNeighbors()
+                #Populate the rooms with items and enemies
+                populateRooms()
                 #Assign player values for loading purposes
                 p.name = name
                 p.age = age

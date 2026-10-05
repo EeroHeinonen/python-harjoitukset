@@ -71,3 +71,8 @@ class Enemy:
                 self.currentRoom.items.append(self.itemHeld)
                 self.currentRoom.enemies.remove(self)
                 input("Press any key to continue...")
+
+    def setOriginalValues(self):
+        originalEnemyHPValue = self.health
+        originalEnemyDMGValue = self.damage
+        return originalEnemyHPValue, originalEnemyDMGValue

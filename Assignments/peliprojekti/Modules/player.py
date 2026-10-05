@@ -3,7 +3,6 @@ from os import system
 import os
 #Importing methods from sibling modules
 from .room import assignNeighbors, livingRoom, Damaging, Healing, Money, rooms
-from .enemy import Enemy
 #Importing the pickle library
 import pickle
 
@@ -84,12 +83,6 @@ class Player:
 
 p = Player("", 0, [], livingRoom, 100, 0, 1)
 
-for room in rooms:
-        for enemy in room.enemies:
-            originalEnemyHPValue = enemy.health
-            orignalEnemyDMGValue = enemy.damage
-
-
 #Creates the player object
 def createPlayer(name, age, inventory, currentRoom, health, money, difMult):
     p = Player(name, age, inventory, currentRoom, health, money, difMult)
@@ -98,8 +91,9 @@ def createPlayer(name, age, inventory, currentRoom, health, money, difMult):
 def setEnemyDif():
     for room in rooms:
         for enemy in room.enemies:
+            originalEnemyHPValue, originalEnemyDMGValue = enemy.setOriginalValues()
             enemy.health = originalEnemyHPValue * p.difMult
-            enemy.damage = orignalEnemyDMGValue * p.difMult
+            enemy.damage = originalEnemyDMGValue * p.difMult
 
 #Displays the player inventory
 def showInventory():
