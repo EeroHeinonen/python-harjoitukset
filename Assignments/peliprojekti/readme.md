@@ -29,4 +29,5 @@ peliprojekti/
 
 # Ohjeet
 __Peli käynnistetään suorittamalla gameNoExt.py tiedosto.__
+
 game.py tiedoston avaamiseen vaaditaan ulkoinen moduuli "pyfiglet".
