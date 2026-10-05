@@ -84,8 +84,11 @@ class Player:
 
 p = Player("", 0, [], livingRoom, 100, 0, 1)
 
-originalEnemyHPValue = enemy.health
-orignalEnemyDMGValue = enemy.damage
+for room in rooms:
+        for enemy in room.enemies:
+            originalEnemyHPValue = enemy.health
+            orignalEnemyDMGValue = enemy.damage
+
 
 #Creates the player object
 def createPlayer(name, age, inventory, currentRoom, health, money, difMult):
@@ -153,9 +156,9 @@ def pickUp():
                         p.currentRoom.items.remove(item)
                         p.saveData()
                         system("cls")
-                        if item.cleanliness = "clean"
+                        if item.cleanliness == "clean":
                             print("Money added to inventory!\n")
-                        else item.cleanliness = "dirty"
+                        elif item.cleanliness == "dirty":
                             print("Money added to inventory!\n You monster... \n")
                         pickUpItem = ""
                         input('Press any key to continue...')

@@ -65,8 +65,8 @@ def populateRooms():
     kitchen.items.append(sandwich)
     street.items.append(Money(random.randint(5, 10)))
     kajaani.items.append(shovel)
-    kemi.items.append(Money(random.randint(10, 15))
-    kokkola.items.append(Money(random.randint(5, 10))
+    kemi.items.append(Money(random.randint(10, 15)))
+    kokkola.items.append(Money(random.randint(5, 10)))
     hardwareStore.items.extend([shovel, baseballBat, hammer, baton])
 
     #Add enemies to room enemies
@@ -103,6 +103,6 @@ def assignNeighbors():
     ranua.neighbors.update({"left": kemi, "down": pudasjärvi})
     kemi.neighbors.update({"right": ranua, "down": oulu, "left": haaparanta})
     haaparanta.neighbors.update({"right": kemi, "left": tornio, "down": hardwareStore})
-    tornio.neighbors.update({"right": haaparanta, "left": store)
+    tornio.neighbors.update({"right": haaparanta, "left": store})
     hardwareStore.neighbors.update({"up": haaparanta, "left": kuopio, "down": tampere, "right": oulu})
     store.neighbors.update({"right": tornio})
