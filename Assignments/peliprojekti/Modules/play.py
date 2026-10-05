@@ -51,7 +51,7 @@ def play():
         #Display final menu
         else:
             system("cls")
-            if p.money < 100:
+            if p.money >= 100:
                 print("You have reached the Haaparanta candy store!\n\nThis is the end of the line.\nNow...\nThe ultimate question...\n\nWill you purchase this piece of salmiakki for a 100 €?")
                 print(r"""
 
