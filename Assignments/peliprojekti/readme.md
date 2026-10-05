@@ -26,3 +26,7 @@ peliprojekti/
   ├── gameProject1.py
   └── gameProject2.py
 ```
+
+# Ohjeet
+__Peli käynnistetään suorittamalla gameNoExt.py tiedosto.__
+game.py tiedoston avaamiseen vaaditaan ulkoinen moduuli "pyfiglet".
