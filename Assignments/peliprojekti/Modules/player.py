@@ -81,19 +81,22 @@ class Player:
                 input("Press any key to continue...")
         except FileNotFoundError:
             print("File not found!")
-    
-    #Set the enemy health and damage according to player difficulty
-    def setEnemyDif(self):
-        for room in rooms:
-            for enemy in room.enemies:
-                enemy.health = enemy.health * self.difMult
-                enemy.damage = enemy.damage * self.difMult
 
 p = Player("", 0, [], livingRoom, 100, 0, 1)
+
+originalEnemyHPValue = enemy.health
+orignalEnemyDMGValue = enemy.damage
 
 #Creates the player object
 def createPlayer(name, age, inventory, currentRoom, health, money, difMult):
     p = Player(name, age, inventory, currentRoom, health, money, difMult)
+    
+#Set the enemy health and damage according to player difficulty
+def setEnemyDif():
+    for room in rooms:
+        for enemy in room.enemies:
+            enemy.health = originalEnemyHPValue * p.difMult
+            enemy.damage = orignalEnemyDMGValue * p.difMult
 
 #Displays the player inventory
 def showInventory():
@@ -150,7 +153,10 @@ def pickUp():
                         p.currentRoom.items.remove(item)
                         p.saveData()
                         system("cls")
-                        print("Money added to inventory!\n")
+                        if item.cleanliness = "clean"
+                            print("Money added to inventory!\n")
+                        else item.cleanliness = "dirty"
+                            print("Money added to inventory!\n You monster... \n")
                         pickUpItem = ""
                         input('Press any key to continue...')
                 else:

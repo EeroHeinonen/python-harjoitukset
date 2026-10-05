@@ -3,6 +3,7 @@ from os import system
 #Importin method from sibling module
 from .bc import badCommand
 from .player import p
+from .room import 
 
 #Sets common variables
 settingsCommand = ""

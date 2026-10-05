@@ -2,7 +2,7 @@
 from os import system
 import os
 #Importing methods, objects and variables from Modules
-from Modules import settingsMenu, badCommand, play, p, Room, Player, livingRoom, createPlayer, assignNeighbors
+from Modules import settingsMenu, badCommand, play, p, Room, Player, livingRoom, createPlayer, assignNeighbors, setEnemyDif
 import pickle
 
 #Initial input for the player name
@@ -63,6 +63,8 @@ else:
                     p.saveData()
                 #Main while loop to display the main menu
                 while command.strip().casefold() != "stop" or command.strip().casefold() != "exit" or command.strip().casefold() != "quit" or command.strip().casefold() != "q":
+                    #Set the enemy HP and DMG according to player difficulty settings
+                    setEnemyDif()
                     system("cls")
                     #Main menu ascii art
                     print(r"""

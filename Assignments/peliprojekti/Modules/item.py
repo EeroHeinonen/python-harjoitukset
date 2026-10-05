@@ -15,5 +15,6 @@ class Healing(Item):
         self.healing = healing
 
 class Money(Item):
-    def __init__(self, amount):
+    def __init__(self, amount, cleanliness):
         self.amount = amount
+        self.cleanliness = cleanliness
