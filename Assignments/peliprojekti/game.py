@@ -19,7 +19,7 @@ fileName = ""
 #Assign variables to the instructions and to the story file
 with io.open("Assignments/peliprojekti/ohjeet.txt", mode="r", encoding="utf-8") as instructions:
     ins = instructions.read()
-with io.open("Assignments/peliprojekti/tarina.txt", mode="r", encopuyding="utf-8") as intro:
+with io.open("Assignments/peliprojekti/tarina.txt", mode="r", encoding="utf-8") as intro:
     intro = intro.read()
 
 #While loop until player inputs a name that isn't empty
@@ -81,7 +81,7 @@ else:
 
 
                             """)
-                    print(pyfiglet.figlet_format("Welcome  " + p.loadData()["Player"].title()))
+                    print(pyfiglet.figlet_format("Welcome  " + p.name.title()))
                     print("Available commands: \n\n- Play (play) \n- Settings (settings) \n- Save (save) \n- Load (load)\n- Delete (delete)\n- Instructions (ins) \n- Quit (quit, exit, stop, q)\n")
                     command = input("Enter a command: ")
                     #Display the "settings" menu for the player
