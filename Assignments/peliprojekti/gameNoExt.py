@@ -1,8 +1,10 @@
 #Used to clear console using system("cls")
 from os import system
 import os
+#Used to open files with UTF-8 encoding
+import io
 #Importing methods, objects and variables from Modules
-from Modules import settingsMenu, badCommand, play, p, Room, Player, livingRoom, createPlayer, assignNeighbors, setEnemyDif, populateRooms
+from Modules import settingsMenu, badCommand, play, p, livingRoom, createPlayer, assignNeighbors, setEnemyDif, populateRooms
 import pickle
 
 #Initial input for the player name
@@ -14,9 +16,9 @@ command = ""
 fileName = ""
 
 #Assign variables to the instructions and to the story file
-with open("Assignments/peliprojekti/ohjeet.txt", "r") as instructions:
+with io.open("Assignments/peliprojekti/ohjeet.txt", mode="r", encoding="utf-8") as instructions:
     ins = instructions.read()
-with open("Assignments/peliprojekti/tarina.txt", "r") as intro:
+with io.open("Assignments/peliprojekti/tarina.txt", mode="r", encoding="utf-8") as intro:
     intro = intro.read()
 
 #While loop until player inputs a name that isn't empty
@@ -89,6 +91,8 @@ else:
                     #Save the player's current game state by calling the Player.saveData() method
                     elif command.strip().casefold() == "save":
                         p.saveData()
+                        system("cls")
+                        print("Succesfully saved!")
                         input("Press any key to continue...")
                     #Display the "load" menu
                     elif command.strip().casefold() == "load":
@@ -124,7 +128,8 @@ else:
                                 #Print out all files in the directory
                                 print("Save files: \n")
                                 for file in os.listdir("Assignments/peliprojekti/saves"):
-                                    print(f"- {file}")
+                                    if file != ".gitkeep":
+                                        print(f"- {file}")
                                 print('\nInput "q" or "quit" to go back')
                                 fileName = input("Input the file name to be deleted: ")
                                 if fileName.strip().casefold() == "q"or fileName.strip().casefold() == "quit":

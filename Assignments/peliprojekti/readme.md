@@ -16,11 +16,13 @@ Peliä pelataan syöttämällä komentoja joka huoneessa, kuten liiku huoneesta 
 
 Huoneiden välillä liikkuminen tapahtuu syöttämällä yksi neljästä suunnasta (ylös: u, alas: d, vasen: l sekä oikea: r), peli ei kerro käyttäjälle mikä suunta johtaa mihin, vaan käyttäjän täytyy itse kartoittaa pelin huoneet.
 
-Vastustajia voi päihittää käyttämällä löydettyjä esineitä, mutta ei muilla tavoin. Löydettyjä esineitä voi käyttää sen tyypistä riippuen joko pelaajan omien elämäpisteiden nostoon, tai vastustajien päihittämiseen. Pelissä ei kuitenkaan ole minkäänlaista kuvailevaa väkivaltaa. Vastustajat saattavat pudottaa joko rahaa tai jonkin esineen jonka pelaaja voi nostaa.
+Vastustajia voi päihittää käyttämällä löydettyjä esineitä, mutta ei muilla tavoin. Löydettyjä esineitä voi käyttää, sen tyypistä riippuen, joko pelaajan omien elämäpisteiden nostoon tai vastustajien päihittämiseen. Pelissä ei kuitenkaan ole minkäänlaista kuvailevaa väkivaltaa. Vastustajat saattavat pudottaa joko rahaa tai jonkin esineen jonka pelaaja voi nostaa.
 
 Peli sisältää myös tallena/lataa järjestelmän, jonka avulla on mahdollistaa tallentaa pelin kyseisen pelaajan tilanne, sekä myös ladata se myöhemmässä ajankohdassa, kuten käynnistyskertojen välillä. Peli tallentaa kyseisen pelaajan tilanteen erilliseen tiedostoon sekä luo jokaiselle pelaajalle henkilökohtaisen tiedoston, mahdollistaen monta tallenusta. Lataus tapahtuu automaattisesti pelaajan syöttäessä nimensä pelin alussa tai vaihtoehtoisesti päävalikon kautta tapahtuvan lataus-valikon (Load data) kautta. Päävalikossa pelaaja voi myös poistaa tallenustietoja poista-valikossa. (Delete data)
 
-Peli sisällyttää fossiilivapaiden energiamuotojen käytön periaatteen tiedottamalla käyttäjälle pelin intro tekstissä moottoriajoneuvojen olevan käyttökiellossa, 
+Pelin vaikeusastetta on myös mahdollista muuttaa asetus-valikon (Settings) kautta.
+
+Peli sisällyttää fossiilivapaiden energiamuotojen käytön periaatteen tiedottamalla käyttäjälle pelin intro tekstissä kävelyn olevan ainoa vaihtoehto liikkumiselle ja moottoriajoneuvojen olevan käyttökiellossa, sillä ilmaston lämpeneminen on saavuttanut kriittisen pisteen, jossa pieninkin määrä viherhuone päästöjä aiheuttaisi maailmanlaajuisen katastrofin.
 
 # Rakenne
 ```text
