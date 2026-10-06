@@ -1,8 +1,11 @@
 #Used to clear console using system("cls")
 from os import system
+import os
+#Used to open files with UTF-8 encoding
+import io
 #Importing methods, objects and variables from Modules
-from Modules import settingsMenu, badCommand, play, p, Room, Player
-#Importing the "pyfiglet" module for the creation of ascii art from input
+from Modules import settingsMenu, badCommand, play, p, livingRoom, createPlayer, assignNeighbors, setEnemyDif, populateRooms
+import pickle
 import pyfiglet
 
 #Initial input for the player name
@@ -11,11 +14,18 @@ name = input("Enter your name: ")
 age = ""
 system("cls")
 command = ""
+fileName = ""
+
+#Assign variables to the instructions and to the story file
+with io.open("Assignments/peliprojekti/ohjeet.txt", mode="r", encoding="utf-8") as instructions:
+    ins = instructions.read()
+with io.open("Assignments/peliprojekti/tarina.txt", mode="r", encopuyding="utf-8") as intro:
+    intro = intro.read()
 
 #While loop until player inputs a name that isn't empty
-while name == "":
+while name == "" or name == "q":
     system("cls")
-    print("You can not input an empty name!")
+    print('You can not input an empty name or "q"!')
     input("Press any key to continue...")
     system("cls")
     name = input("Enter your name: ")
@@ -37,38 +47,108 @@ else:
                 system("cls")
                 print("The minimum age is 12!")
             else:
+                system("cls")
+                #Assign room neighbors using function from room.py
+                assignNeighbors()
+                #Populate the rooms with items and enemies
+                populateRooms()
+                #Assign player values for loading purposes
                 p.name = name
                 p.age = age
-                p.saveData()
+                print(intro)
+                input("Press any key to continue...")
+                #Attempt to autoload if a save file exists with the player name
+                try:
+                    with open("Assignments/peliprojekti/saves/" + name.strip().casefold() + ".pkl", "rb") as saveFile:
+                        p.loadFile = pickle.load(saveFile)
+                    p.loadData(name.strip().casefold())
+                #Create a new save file with the player's name, age + default attributes
+                except FileNotFoundError:
+                    createPlayer(name, age, [], livingRoom, 100, 0, 1)
+                    p.saveData()
                 #Main while loop to display the main menu
                 while command.strip().casefold() != "stop" or command.strip().casefold() != "exit" or command.strip().casefold() != "quit" or command.strip().casefold() != "q":
+                    #Set the enemy HP and DMG according to player difficulty settings
+                    setEnemyDif()
                     system("cls")
-                    #Fetches the player's data from the save file
-                    #Converts the player name to ascii art and prints it on the main menu
+                    #Main menu ascii art
+                    print(r"""
+
+ _  _   __    __   ____   __   ____   __   __ _  __ _   __   __ _    _  _  _  _  __ _  ____  _  _   __  ____  __  ____ 
+/ )( \ / _\  / _\ (  _ \ / _\ (  _ \ / _\ (  ( \(  ( \ / _\ (  ( \  / )( \/ )( \(  ( \/ ___)/ )( \ /  \(_  _)(  )(_  _)
+) __ (/    \/    \ ) __//    \ )   //    \/    //    //    \/    /  ) __ () \/ (/    /\___ \\ \/ /(  O ) )(   )(   )(  
+\_)(_/\_/\_/\_/\_/(__)  \_/\_/(__\_)\_/\_/\_)__)\_)__)\_/\_/\_)__)  \_)(_/\____/\_)__)(____/ \__/  \__/ (__) (__) (__) 
+
+
+                            """)
                     print(pyfiglet.figlet_format("Welcome  " + p.loadData()["Player"].title()))
-                    print("Available commands: \n\n- Play (play) \n- Settings (settings) \n- Save (save) \n- Load (load) \n- Quit (quit, exit, stop, q)\n")
+                    print("Available commands: \n\n- Play (play) \n- Settings (settings) \n- Save (save) \n- Load (load)\n- Delete (delete)\n- Instructions (ins) \n- Quit (quit, exit, stop, q)\n")
                     command = input("Enter a command: ")
-                    #Displays the "settings" menu for the player
+                    #Display the "settings" menu for the player
                     if command.strip().casefold() == "settings":
                         settingsMenu()
-                    #Displays the "play" menu for the player
+                    #Display the "play" menu for the player
                     elif command.strip().casefold() == "play":
                         play()
-                    #Saves the game
+                    #Save the player's current game state by calling the Player.saveData() method
                     elif command.strip().casefold() == "save":
                         p.saveData()
                         system("cls")
-                        print("Saved succesfully!")
+                        print("Succesfully saved!")
                         input("Press any key to continue...")
-                    #Displays the "play" menu for the player
+                    #Display the "load" menu
                     elif command.strip().casefold() == "load":
-                        p.loadData()
+                        #While loop to continue displaying the "load" menu until player input is either "q" or "quit"
+                        while fileName.strip().casefold() != "q" or fileName.strip().casefold() != "quit":
+                            system("cls")
+                            #List all the files in the directory "saves"
+                            if os.listdir("Assignments/peliprojekti/saves"):
+                                #Prints all the files in the directory
+                                print("Save files: \n")
+                                for file in os.listdir("Assignments/peliprojekti/saves"):
+                                    if file != ".gitkeep":
+                                        print(f"- {file}")
+                                print('\nInput "q" or "quit" to go back')
+                                fileName = input("Input the file name to be loaded: ")
+                                if fileName.strip().casefold() == "q" or fileName.strip().casefold() == "quit":
+                                    break
+                                #Load the selected save file using player input as an argument
+                                else:
+                                    p.loadData(fileName)
+                            #Inform the player there are no saves
+                            else:
+                                print("The save file directory is empty!")
+                                input("Press any key to continuel...")
+                                break
+                    #Display the "delete" menu
+                    elif command.strip().casefold() == "delete":
+                        #While loop to display delete menu while player command is not "q" or "quit"
+                        while fileName.strip().casefold() != "q" or fileName.strip().casefold() != "quit":
+                            system("cls")
+                            #List all files in the directory "saves"
+                            if os.listdir("Assignments/peliprojekti/saves"):
+                                #Print out all files in the directory
+                                print("Save files: \n")
+                                for file in os.listdir("Assignments/peliprojekti/saves"):
+                                    if file != ".gitkeep":
+                                        print(f"- {file}")
+                                print('\nInput "q" or "quit" to go back')
+                                fileName = input("Input the file name to be deleted: ")
+                                if fileName.strip().casefold() == "q"or fileName.strip().casefold() == "quit":
+                                    break
+                                #Delete selected player data by calling the Player.deleteData() method
+                                else:
+                                    p.deleteData(fileName)
+                            #Display a message informing the directory is empty
+                            else:
+                                print("The save file directory is empty!")
+                                input("Press any key to continuel...")
+                                break
+                    #Display the instructions menu
+                    elif command.strip().casefold() == "ins":
                         system("cls")
-                        print(f"Name: {p.loadFile["Player"].title()}\nAge: {p.loadFile["Age"]}\nCurrent room: {p.loadFile["Room"].name}")
-                        print("Inventory: ")
-                        for item in p.loadFile["Items"]:
-                            print(f"- {item.name.title()}")
-                        input("\nPress any key to continue...")
+                        print(ins)
+                        input("Press any key to continue...")
                     #Stops the program if one of the "quitting" keywords is inputted by the player
                     elif command.strip().casefold() == "stop" or command.strip().casefold() == "exit" or command.strip().casefold() == "quit" or command.strip().casefold() == "q":
                         break
