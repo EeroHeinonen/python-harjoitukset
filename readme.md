@@ -1,5 +1,65 @@
 # Ohjelmisto 1 Python harj.
 
+Eero Heinonen
+
+
+
+## Mod 1 ja 2
+
+hello.py - Luotu ja ajettu.
+
+Git säädetty toimivaksi.
+
+## Mod 3
+
+Tehtävät 1-6 tehty ja ajettu.
+
+"peliprojekti" kansio luotu.
+
+## Mod 4
+
+Tehtävät 1-4 tehty ja ajettu.
+
+## Mod 5
+
+Tehtävät 1 - 4 tehty ja ajettu.
+
+Projekti tehtävä 2 tehty.
+
+## Mod 6
+
+Tehtävät 1 - 4 tehty ja ajettu.
+
+## Mod 7
+
+Tehtävät 1 - 6 tehty ja ajettu.
+
+Projekti tehtävä 3 tehty.
+
+## Mod 8
+
+Tehtävät 1 - 3 tehty ja ajettu.
+
+## Mod 9
+
+Tehtävät 1 - 4 tehty ja ajettu.
+
+## Mod 10
+
+Tehtävät 1-4 tehty ja ajettu.
+
+## Mod 11
+
+Tehtävät 1 ja 2 tehty ja ajettu.
+
+## Mod 12
+
+Tehtävä tehty.
+
+## Mod 13
+
+Tehtävä tehty.
+
 # Rakenne
 ```
 python-harjoitukset/
@@ -57,74 +117,23 @@ python-harjoitukset/
 │
 └── peliprojekti/
     ├── Modules/
-    │   ├── __pycache__/
-    │   ├── __init__.py
-    │   ├── bc.py
-    │   ├── enemy.py
-    │   ├── item.py
-    │   ├── play.py
-    │   ├── player.py
-    │   ├── room.py
-    │   └── settings.py
+    │ ├── __pycache__/
+    │ ├── __init__.py
+    │ ├── bc.py
+    │ ├── enemy.py
+    │ ├── item.py
+    │ ├── play.py
+    │ ├── player.py
+    │ ├── room.py
+    │ └── settings.py
     ├── game.py
     ├── gameNoExt.py
     ├── ohjeet.txt
     ├── readme.md
-    ├── save.pkl
     ├── tarina.txt
+    └── saves/
+      └── .gitkeep
     └── Tasks/
-        ├── gameProject1/
-        └── gameProject2/
+      ├── gameProject1.py
+      └── gameProject2.py
 ```
-
-Eero Heinonen
-
-
-
-## Mod 1 ja 2
-
-hello.py - Luotu ja ajettu.
-
-Git säädetty toimivaksi.
-
-## Mod 3
-
-Tehtävät 1-6 tehty ja ajettu.
-
-"peliprojekti" kansio luotu.
-
-## Mod 4
-
-Tehtävät 1-4 tehty ja ajettu.
-
-## Mod 5
-
-Tehtävät 1 - 4 tehty ja ajettu.
-
-Projekti tehtävä 2 tehty.
-
-## Mod 6
-
-Tehtävät 1 - 4 tehty ja ajettu.
-
-## Mod 7
-
-Tehtävät 1 - 6 tehty ja ajettu.
-
-Projekti tehtävä 3 tehty.
-
-## Mod 8
-
-Tehtävät 1 - 3 tehty ja ajettu.
-
-## Mod 9
-
-Tehtävät 1 - 4 tehty ja ajettu.
-
-## Mod 10
-
-Tehtävät 1-4 tehty ja ajettu.
-
-## Mod 11
-
-Tehtävät 1 ja 2 tehty ja ajettu.
