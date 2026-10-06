@@ -6,6 +6,7 @@ Eero Heinonen
 __Peli käynnistetään suorittamalla gameNoExt.py tiedosto.__
 
 game.py tiedoston suorittamiseen vaaditaan ulkoinen moduuli "pyfiglet".
+
 (pip install pyfiglet)
 
 # Dokumentaatio
