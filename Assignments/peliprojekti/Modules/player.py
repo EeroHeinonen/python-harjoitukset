@@ -244,7 +244,7 @@ def move():
     #While loop to ask player for their movement input
     while directionToMove != "q":
         system("cls")
-        directionToMove = input('Input "q" or "quit" to go back \nor input the direction to move to ("up", "down", "left", "right"): ')
+        directionToMove = input('Input "q" or "quit" to go back \nor input the direction to move to ("up" (u), "down" (d), "left" (l), "right") (r): ')
 
         #Checks if the movement input is possible
         if directionToMove.strip().casefold() in p.currentRoom.neighbors:
