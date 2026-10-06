@@ -71,7 +71,7 @@ else:
                     #Set the enemy HP and DMG according to player difficulty settings
                     setEnemyDif()
                     system("cls")
-                    #Print the player name and a welcome text in ascii art
+                    #Print the game title, welcome text and the player name in ascii art
                     print(pyfiglet.figlet_format("Haaparannan Hunsvotit\nWelcome  " + p.name.title()))
                     print("Available commands: \n\n- Play (play) \n- Settings (settings) \n- Save (save) \n- Load (load)\n- Delete (delete)\n- Instructions (ins) \n- Quit (quit, exit, stop, q)\n")
                     command = input("Enter a command: ")
