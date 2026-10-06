@@ -43,6 +43,7 @@ peliprojekti/
 ├── readme.md
 ├── tarina.txt
 └── saves/
+  └── .gitkeep
 └── Tasks/
   ├── gameProject1.py
   └── gameProject2.py
