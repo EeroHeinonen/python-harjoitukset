@@ -5,7 +5,8 @@ Eero Heinonen
 # Ohjeet
 __Peli käynnistetään suorittamalla gameNoExt.py tiedosto.__
 
-game.py tiedoston avaamiseen vaaditaan ulkoinen moduuli "pyfiglet".
+game.py tiedoston suorittamiseen vaaditaan ulkoinen moduuli "pyfiglet".
+(pip install pyfiglet)
 
 # Dokumentaatio
 Peli sijoittuu tulevaisuuteen vuoteen 2083 ja sen ideana on käydä läpi eri huoneita (kaupunkeja) Suomen kartalla, keräten rahaa etsimällä sitä kaupungeista tai päihittämällä vastustajia.
