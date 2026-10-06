@@ -41,8 +41,8 @@ peliprojekti/
 ├── gameNoExt.py
 ├── ohjeet.txt
 ├── readme.md
-├── save.pkl
 ├── tarina.txt
+└── saves/
 └── Tasks/
   ├── gameProject1.py
   └── gameProject2.py
